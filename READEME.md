@@ -1,4 +1,4 @@
-# Dice roller
+# Dice-roller
 
 ## Description
 
