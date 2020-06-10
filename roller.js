@@ -1,10 +1,19 @@
-var stdin = process.openStdin();
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-stdin.addListener('data', function (d) {
-  // note:  d is an object, and when converted to a string it will
-  // end with a linefeed.  so we (rather crudely) account for that
-  // with toString() and then trim()
-  console.log('you entered: [' + d.toString().trim() + ']');
+rl.question('How many dice do you want to roll? ', function (amount) {
+  rl.question('What sided die? ', function (diceType) {
+    console.log(`You rolled ${amount}d${diceType}`);
+    // rl.close();
+  });
+});
+
+rl.on('close', function () {
+  console.log('\nBYE BYE !!!');
+  process.exit(0);
 });
 
 function rollDice(min, max) {
